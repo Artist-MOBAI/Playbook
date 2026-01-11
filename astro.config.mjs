@@ -6,8 +6,8 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'Open Hackathon Playbook',
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/AdventureX-RGE' }],
 			sidebar: [
 				{
 					label: 'Guides',
