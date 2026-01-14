@@ -1,0 +1,72 @@
+@layer base, starlight, theme, components, utilities;
+
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+:root {
+    --color-bg: #0A0A0A;
+    --color-text: #F2F2F2;
+    --color-muted: #7B7B80;
+    --color-accent: #F48529;
+    --color-border: #29292C;
+
+    --sl-color-bg: var(--color-bg);
+    --sl-color-bg-sidebar: var(--color-bg);
+    --sl-color-bg-nav: var(--color-bg);
+
+    --sl-font: 'Patika', sans-serif;
+}
+
+header a {
+    color: var(--color-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text);
+}
+
+summary span span {
+    color: var(--color-text);
+}
+
+summary {
+    padding: 6px 12px;
+}
+
+.sl-sidebar *{
+    font-weight: 900;
+    background-color: red !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.starlight-header .theme-toggle {
+    display: none !important;
+}
+
+.content-panel, #starlight__sidebar, .right-sidebar{
+    border: none;
+}
+
+header {
+    height: auto;
+    padding: 0;
+    border: none;
+}
+
+#starlight__sidebar {
+    border-right: 1px solid var(--color-border);
+}
+
+.right-sidebar {
+    border-left: 1px solid var(--color-border);
+}
+
+p,
+li {
+    color: var(--color-text);
+}
+
