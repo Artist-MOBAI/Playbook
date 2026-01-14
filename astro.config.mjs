@@ -10,7 +10,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: 'https://adventure-x.org',
   integrations: [starlight({
-      title: 'Open Hackathon Playbook',
+      title: 'OPEN HACKATHON PLAYBOOK',
     // social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/AdventureX-RGE' }],
       sidebar: [
           // {
