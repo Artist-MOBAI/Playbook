@@ -2,38 +2,41 @@
 const { sublist } = Astro.props;
 ---
 
-{Array.isArray(sublist) && sublist.map((entry) => {
-  if (entry.type === "link") {
-    // aria-[current=page]:text-(--color-muted)
-    return (
-    <a
+{
+  Array.isArray(sublist) &&
+    sublist.map((entry) => {
+      if (entry.type === "link") {
+        // aria-[current=page]:text-(--color-muted)
+        return (
+          <a
             href={entry.href}
             aria-current={entry.isCurrent && "page"}
             {...entry.attrs}
             class="px-3 py-1.5 text-[18px] font-medium leading-6 rounded-lg text-(--color-muted)
             aria-[current=page]:text-(--color-text) aria-[current=page]:bg-(--color-accent)/30
             hover:text-(--color-text) hover:bg-(--color-accent)/30"
-    >
-      {entry.label}
-    </a>
-      );
-    }
+          >
+            {entry.label}
+          </a>
+        );
+      }
 
-  if (entry.type === "group") {
-    return (
-    <div class="flex flex-col gap-2">
-        <div class="px-3 py-1.5 text-[18px] leading-6 font-medium tracking-wider text-(--color-text)">
-          {entry.label}
-        </div>
+      if (entry.type === "group") {
+        return (
+          <div class="flex flex-col gap-2">
+            <div class="px-3 py-1.5 text-[18px] leading-6 font-medium tracking-wider text-(--color-text)">
+              {entry.label}
+            </div>
 
-        <div class="flex flex-col gap-1">
-          {entry.entries && entry.entries.length > 0 && (
-                  <Astro.self sublist={entry.entries} />
-          )}
-        </div>
-    </div>
-      );
-    }
+            <div class="flex flex-col gap-1">
+              {entry.entries && entry.entries.length > 0 && (
+                <Astro.self sublist={entry.entries} />
+              )}
+            </div>
+          </div>
+        );
+      }
 
-  return null;
-  })}
+      return null;
+    })
+}
