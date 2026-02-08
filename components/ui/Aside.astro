@@ -1,0 +1,29 @@
+---
+import { asideTypes, type AsideType } from "../../config/aside-types";
+
+interface Props {
+	type?: AsideType;
+	title?: string;
+}
+
+const { type = "note", title } = Astro.props;
+
+const config = asideTypes[type] ?? asideTypes.note;
+const displayTitle = title || config.title;
+---
+
+<aside
+	class="px-4 py-3 rounded-xl border flex flex-col overflow-hidden"
+	style={`--aside-color: ${config.color}; border-color: ${config.color}; background-color: ${config.bgColor};`}
+	aria-label={displayTitle}
+>
+	<div class="flex items-center gap-2.5">
+		<div class="w-6 h-6 text-(--aside-color)" set:html={config.iconSvg} />
+		<span class="text-xl font-medium leading-normal text-(--aside-color)">
+			{displayTitle}
+		</span>
+	</div>
+	<div class="text-base font-normal leading-normal text-(--color-text)">
+		<slot />
+	</div>
+</aside>

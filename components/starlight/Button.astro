@@ -1,0 +1,65 @@
+---
+import { Icon, Badge } from "@astrojs/starlight/components";
+import type { ComponentProps } from "astro/types";
+
+interface Props {
+  text: string;
+  auxText?: string;
+  badge?: ComponentProps<typeof Badge>;
+
+  /**
+   * Whether to show the chevron (Optional).
+   */
+  showLeftChevron?: boolean;
+  showRightChevron?: boolean;
+
+  href?: string;
+  class?: string;
+}
+
+const {
+  text,
+  auxText,
+  badge,
+  showLeftChevron,
+  showRightChevron,
+  href,
+  class: className,
+} = Astro.props;
+
+const Tag = href ? "a" : "button";
+---
+
+<Tag
+  href={href}
+  type={href ? undefined : "button"}
+  class:list={[
+    "inline-flex items-center justify-center no-underline",
+    "transition-opacity hover:opacity-90",
+    className,
+  ]}
+  style={{
+    padding:
+      "var(--rounding-number-space-compact, 6px) var(--rounding-number-space-x-compact, 8px)",
+    gap: "var(--rounding-number-space-compact, 6px)",
+
+    borderRadius: "var(--rounding-number-radius-medium, 12px)",
+    border:
+      "var(--rounding-number-stroke-light, 0.6px) solid var(--color-primary-orange-main, #F48529)",
+    background: "var(--color-primary-orange-bg, rgba(244, 133, 41, 0.24))",
+
+    color: "var(--color-primary-orange-main, #F48529)",
+  }}
+>
+  {showLeftChevron && <Icon name="left-caret" size="0.75rem" />}
+
+  <span class="font-medium text-sm leading-none">
+    {text}
+  </span>
+
+  {auxText && <span class="text-xs opacity-80 leading-none">{auxText}</span>}
+
+  {badge && <Badge {...badge} />}
+
+  {showRightChevron && <Icon name="right-caret" size="0.75rem" />}
+</Tag>
